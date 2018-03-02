@@ -7,20 +7,29 @@
 import React from 'react';
 
 import './style.scss';
-import NavItem from './NavItem';
 
 class HeaderNav extends React.Component {
 	render() {
-		const { logo, navItems: navItemsSetting } = this.props;
-		const navItems = (navItemsSetting || []).map((item, key) =>
-			<NavItem item={item} key={key} />
-		);
+		const { logo } = this.props;
+		const index = true;
 		return (
-			<div className="header-nav">
-				<div className="header-nav-logo" onClick={logo.onClick}>{logo.label}</div>
-				<ul className="user-actions">
-					{navItems}
-				</ul>
+			<div className="header-nav" style={{backgroundImage: index ? 'url(/main.jpg)' : ''}}>
+				<nav className="nav">
+					<div className="header-nav-logo" onClick={logo.onClick}>{logo.label}</div>
+					<a className={'menu-button ' + (index ? 'home-button' : '')} href="#">
+						<i className="iconfont menu">&#xe62c;</i>
+						<span className="word">菜单</span>
+					</a>
+				</nav>
+				<div className="vertical">
+					<div className="main-header-content inner">
+						<h1 className="page-title">qiuz</h1>
+						<h2 className="page-description">Life is need to record.</h2>
+					</div>
+				</div>
+				<a className="" href="#content" data-offset="-45">
+					<i className="iconfont scroll-down">&#xe62d;</i>
+				</a>
 			</div>
 		)
 	}

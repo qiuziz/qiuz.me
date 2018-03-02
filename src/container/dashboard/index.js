@@ -57,10 +57,9 @@ export default class dashboard extends React.Component {
 				{children}
 			</section>
 		</div>;
-
 		const logo = {
 			name: 'title',
-			label: '基础框架'
+			label: <img src="/logo.jpg" alt="logo" />
 		};
 		const navItems = [{
 			name: 'userName',

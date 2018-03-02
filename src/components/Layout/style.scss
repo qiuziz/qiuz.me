@@ -2,12 +2,12 @@
 $height: 3rem;
 
 .layout {
-  height: 100vh;
+  // height: 100vh;
   display: flex;
   flex-flow: column;
 
   .layout-header {
-    height: $height;
+    height: 100vh;
   }
 
   .layout-body {
