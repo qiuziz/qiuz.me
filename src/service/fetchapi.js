@@ -7,15 +7,15 @@ import 'whatwg-fetch';
 
 const fetchMethod = (_url, _config) => {
 	return fetch(_url, _config)
-					.then(response => {
-						if (!response.ok) {
-							return response.json().then(err => { throw err; });
-						}
-						return response.json().then(undefined, () => Promise.resolve(''));
-					})
-					.catch(err => {
-						throw err;
-					});
+		.then(response => {
+			if (!response.ok) {
+				return response.json().then(err => { throw err; });
+			}
+			return response.json().then(undefined, () => Promise.resolve(''));
+		})
+		.catch(err => {
+			throw err;
+		});
 };
 
 const matchUrlSearchParams = (url, urlSearchParams) => {

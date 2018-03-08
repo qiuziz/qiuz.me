@@ -4,43 +4,14 @@
  * */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import {createSelector} from 'reselect';
 
 import Layout from '../../components/Layout';
 import HeaderNav from '../../components/HeaderNav';
-import Menu from '../../components/Menu';
 import Navigation from '../../components/Navigation';
-import { logout, queryMenuSetting } from '../../actions';
 
-
-const selectedItemsSelector = (list = [], route = '') =>
-	list.map(subMenu => ({
-		...subMenu,
-		child: subMenu.child.filter(menuItem => route.indexOf(menuItem.route) > -1)
-	})
-	);
-
-@connect(
-	state => ({
-		user: state.user.userInfo,
-		menuList: state.menu.list,
-		selectedItems: createSelector(
-			state => state.menu.list,
-			state => {
-				return state.routing.locationBeforeTransitions.pathname;
-			},
-			selectedItemsSelector
-		)(state)
-	}), {
-		logout,
-		queryMenuSetting
-	}
-)
 export default class dashboard extends React.Component {
 
 	componentDidMount() {
-		this.props.queryMenuSetting();
 	}
 
 	logoOut() {
@@ -50,7 +21,7 @@ export default class dashboard extends React.Component {
 
 	}
 	render() {
-		const { menuList, children, user, selectedItems } = this.props;
+		const { children } = this.props;
 		const content = <div className="content-body">
 			<Navigation />
 			<section className="content-main">
@@ -61,22 +32,14 @@ export default class dashboard extends React.Component {
 			name: 'title',
 			label: <img src="/logo.jpg" alt="logo" />
 		};
-		const navItems = [{
-			name: 'userName',
-			label: user.username
-		}, {
-			name: 'logout',
-			label: 'Logout',
-			fn: () => this.logoOut()
-		}];
 
 		return (
 			<Layout
-				header={<HeaderNav logo={logo} navItems={navItems} />
+				header={<HeaderNav logo={logo} />
 				}
-				aside = {
-					<Menu menuList={menuList} selectedItems={selectedItems} />
-				}
+				// aside = {
+				// 	<Menu menuList={menuList} selectedItems={selectedItems} />
+				// }
 				content = {
 					content
 				}

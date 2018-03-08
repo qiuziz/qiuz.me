@@ -11,23 +11,23 @@ const SERVICE_NAME = '';
 export const Resource = {
 
 	/**
-	 * login
+	 * bloglist
 	 */
 
-	login: fetchResource(`${API_HOST}${SERVICE_NAME}/login`), 
+	bloglist: fetchResource(`${API_HOST}${SERVICE_NAME}/bloglist`),
 
 	/**
 	 * 接口 user
 	 */
 
-	getUsers: fetchResource(`${API_HOST}${SERVICE_NAME}/getUsers`), 
+	getUsers: fetchResource(`${API_HOST}${SERVICE_NAME}/getUsers`),
 
-	updateUser: fetchResource(`${API_HOST}${SERVICE_NAME}/updateUser`), 
-	
-	addUser: fetchResource(`${API_HOST}${SERVICE_NAME}/addUser`), 
+	updateUser: fetchResource(`${API_HOST}${SERVICE_NAME}/updateUser`),
 
-	getOneUser: fetchResource(`${API_HOST}${SERVICE_NAME}/getOneUser`), 
-	
+	addUser: fetchResource(`${API_HOST}${SERVICE_NAME}/addUser`),
+
+	getOneUser: fetchResource(`${API_HOST}${SERVICE_NAME}/getOneUser`),
+
 
 	/**
 	 * 接口 worklog
@@ -55,10 +55,10 @@ export const Resource = {
 	addRecord: fetchResource(`${API_HOST}${SERVICE_NAME}/addRecord`),
 
 	getRecordList: fetchResource(`${API_HOST}${SERVICE_NAME}/getRecordList`),
-	
-	deleteRecord: fetchResource(`${API_HOST}${SERVICE_NAME}/deleteRecord`),
-	
-	getOneRecord: fetchResource(`${API_HOST}${SERVICE_NAME}/getOneRecord`),
 
-	
+	deleteRecord: fetchResource(`${API_HOST}${SERVICE_NAME}/deleteRecord`),
+
+	getOneRecord: fetchResource(`${API_HOST}${SERVICE_NAME}/getOneRecord`)
+
+
 };

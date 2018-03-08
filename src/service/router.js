@@ -6,10 +6,10 @@
 import React from 'react';
 import { Route, Redirect, IndexRedirect } from 'react-router';
 import LocalStorage from './LocalStorage';
-import dashboard from '../container/dashboard';
-import Login from '../container/login';
-import Page1 from '../container/page1';
-import Page2 from '../container/page2';
+import Dashboard from '../container/Dashboard';
+import Login from '../container/Login';
+import Home from '../container/Home';
+import Article from '../container/Article';
 
 const isLogin = (nextState, replace, callback) => {
 	const user = LocalStorage.getItem('user');
@@ -20,15 +20,14 @@ const isLogin = (nextState, replace, callback) => {
 	}
 }
 
-
 export default (
 	<Route>
-		<Route path="/" component={dashboard} onEnter={(...args) => isLogin(...args)}>
-			<IndexRedirect to="/page1" />
-			<Route path="page1" component={Page1} />
-			<Route path="page2" component={Page2} />
+		<Route path="/" component={Dashboard} onEnter={(...args) => isLogin(...args)}>
+			<IndexRedirect to="/home" />
+			<Route path="home" component={Home} />
+			<Route path="article" component={Article} />
 		</Route>
 		<Route path="login" component={Login} />
-		<Redirect from="*" to="page1" />
+		<Redirect from="*" to="home" />
 	</Route>
 );

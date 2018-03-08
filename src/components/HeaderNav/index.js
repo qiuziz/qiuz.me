@@ -9,6 +9,12 @@ import React from 'react';
 import './style.scss';
 
 class HeaderNav extends React.Component {
+
+	scrollDown(e) {
+		e.preventDefault();
+		window.scrollTo({"behavior": "smooth", "top": window.innerHeight});
+	}
+
 	render() {
 		const { logo } = this.props;
 		const index = true;
@@ -27,7 +33,7 @@ class HeaderNav extends React.Component {
 						<h2 className="page-description">Life is need to record.</h2>
 					</div>
 				</div>
-				<a className="" href="#content" data-offset="-45">
+				<a className="" href="#content" data-offset="-45" onClick={e => this.scrollDown(e)}>
 					<i className="iconfont scroll-down">&#xe62d;</i>
 				</a>
 			</div>
