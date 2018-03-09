@@ -13,7 +13,7 @@ class Layout extends React.Component {
 		const {header, aside, content} = this.props;
 		return (
 			<div className="layout">
-				<header className="layout-header">{header}</header>
+				{header}
 				<div className="layout-body">
 					<aside className="layout-aside">{aside}</aside>
 					<main className="layout-content">{content}</main>

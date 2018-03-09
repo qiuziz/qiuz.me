@@ -18,26 +18,25 @@ const getInitState = () => ({
 		userInfo: LocalStorage.getItem('user') || {}
 	}
 });
-const hashLinkScroll = () => {
-	const { hash } = window.location;
-	if (hash !== '') {
-		// Push onto callback queue so it runs after the DOM is updated,
-		// this is required when navigating from a different page so that
-		// the element is rendered on the page before trying to getElementById.
-		setTimeout(() => {
-			const id = hash.replace('#', '');
-			const element = document.getElementById(id);
-			if (element) element.scrollIntoView();
-		}, 0);
-	}
-}
 
 const store = configureStore(getInitState());
 window.store = store;
 const history = syncHistoryWithStore(browserHistory, store);
+history.listen(() => {
+	// Use setTimeout to make sure this runs after React Router's own listener
+	setTimeout(() => {
+		// Keep default behavior of restoring scroll position when user:
+		// - clicked back button
+		// - clicked on a link that programmatically calls `history.goBack()`
+		// - manually changed the URL in the address bar (here we might want
+		// to scroll to top, but we can't differentiate it from the others)
+		// In all other cases, scroll to top
+		window.scrollTo(0, 0);
+	});
+});
 ReactDOM.render((
 	<Provider store={store}>
-		<Router history={history} routes={routes} onUpdate={hashLinkScroll}/>
+		<Router history={history} routes={routes}/>
 	</Provider>
 
 ), document.getElementById('root'));

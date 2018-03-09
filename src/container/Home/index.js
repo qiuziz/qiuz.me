@@ -16,6 +16,9 @@ export default class dashboard extends React.Component {
 		}
 	}
 
+	componentWillMount() {
+	}
+
 	componentDidMount() {
 		Resource.bloglist.get().then(res => {
 			if (res && res.list) {

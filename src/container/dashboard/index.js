@@ -7,7 +7,6 @@ import React from 'react';
 
 import Layout from '../../components/Layout';
 import HeaderNav from '../../components/HeaderNav';
-import Navigation from '../../components/Navigation';
 
 export default class dashboard extends React.Component {
 
@@ -23,7 +22,6 @@ export default class dashboard extends React.Component {
 	render() {
 		const { children } = this.props;
 		const content = <div className="content-body">
-			<Navigation />
 			<section className="content-main">
 				{children}
 			</section>

@@ -27,7 +27,9 @@
 	-webkit-text-stroke-width: 0.2px;
 	-moz-osx-font-smoothing: grayscale;
 }
-
+ 
+.layout-header {
+	height: 100vh;
 .header-nav {
 	padding: 35px 40px;
 	margin: 0 0 30px 0;
@@ -160,4 +162,5 @@
 			border-left: 1px solid;
 		}
 	}
+}
 }

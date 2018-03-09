@@ -5,6 +5,7 @@
 
 import React from 'react';
 import HTMLEllipsis from 'react-lines-ellipsis/lib/html';
+import BrowserUtils from '../../service/history';
 
 import './style.scss';
 
@@ -21,6 +22,10 @@ class BlogList extends React.Component {
 	// 		this.setState({data: nextProps.list});
 	// 	}
 	// }
+
+	detail(data) {
+		BrowserUtils.push({pathname: '/article', state: { data: data}})
+	}
 	render() {
 		const { list } = this.props;
 		return (
@@ -29,7 +34,7 @@ class BlogList extends React.Component {
 					list.map((item, index) => {
 						return (
 							<article className="post" key={index}>
-								<a href="/article">
+								<div onClick={() => this.detail(item)}>
 									<header className="post-header">
 										<h2 className="post-title">
 											{item.title}
@@ -43,7 +48,7 @@ class BlogList extends React.Component {
 											basedOn="letters"
 										/>
 									</section>
-								</a>
+								</div>
 								<footer className="post-meta">
 									<img className="author-thumb" src="//cn.gravatar.com/avatar/6a228b5bbc821a0e291f1e49072f8121?s=250&amp;d=mm&amp;r=x" alt="qiuz" />
 									<a href="/author/qiuz/">qiuz</a>

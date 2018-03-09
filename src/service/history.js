@@ -8,21 +8,17 @@ import { browserHistory } from 'react-router';
 
 const BrowserUtils = {
 
-  direction: this.direction || 'right',
 
 	push(params) {
-    browserHistory.push(params);
-    this.direction = 'right';
+		browserHistory.push(params);
 	},
 
 	replace(params) {
-    browserHistory.replace(params);
-    this.direction = 'right';
+		browserHistory.replace(params);
 	},
 
 	goBack() {
 		browserHistory.goBack();
-    this.direction = 'left';
 	}
 
 };
