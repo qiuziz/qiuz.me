@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
 import { Resource } from '../../service/resource';
 
-class homeStoreClass {
+class articleStoreClass {
 	@observable bolgList: any[] = [];
 
 	@action getBlogList = () => {
@@ -13,4 +13,4 @@ class homeStoreClass {
 		})
 	}
 }
-export const homeStore = new homeStoreClass();
+export const articleStore = new articleStoreClass();

@@ -24,7 +24,7 @@ export class BlogList extends React.Component<any> {
 	// }
 
 	detail(data: any) {
-		// BrowserUtils.push({pathname: '/article', state: { data: data}})
+		this.props.onItemClick && this.props.onItemClick(data)
 	}
 	render() {
 		const { list } = this.props;

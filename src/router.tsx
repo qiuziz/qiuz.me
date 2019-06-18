@@ -3,14 +3,14 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-05-07 16:03:31
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-18 17:14:08
+ * @Last Modified time: 2019-06-18 18:04:33
  */
 
 import * as React from 'react';
 import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { HashHistory } from './common';
 import { Provider } from 'mobx-react';
-import { Layout, Nav, HeaderNav } from './component';
+import { Layout, HeaderNav } from './component';
 
 import {
 	CityList,
@@ -19,12 +19,14 @@ import {
 	TabsDemo,
 	ImgLoadDemo,
 	Home,
-	Video
+	Video,
+	Article
 } from './container';
 
-import { homeStore } from './container';
+import { homeStore, articleStore } from './container';
 const STORES = {
-	homeStore
+	homeStore,
+	articleStore
 };
 
 export const routes = [
@@ -76,6 +78,13 @@ export const routes = [
     exact: true,
 		title: 'video',
   },
+  {
+    path: '/article',
+		Component: Article,
+		Layout: Layout,
+    exact: true,
+		title: 'article',
+  },
 ];
 
 const App = () => {
@@ -95,9 +104,9 @@ const App = () => {
 	                document.title = title;
 	                return Layout
 		                  ? <Layout {...props}>
-												<HeaderNav {...props} History={History} root={root} />
-		                    <Component {...props} History={History} />
-		                  </Layout>
+													<HeaderNav {...props} History={History} root={root} />
+			                    <Component {...props} History={History} />
+			                  </Layout>
 		                  : <div>
 													<HeaderNav {...props} History={History} root={root} />
 													<Component {...props} History={History} />

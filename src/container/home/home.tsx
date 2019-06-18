@@ -2,13 +2,11 @@
  * @Author: zhaoyn
  * @Date: 2019-03-04 14:38:25
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-18 16:15:01
+ * @Last Modified time: 2019-06-18 18:04:49
  */
 import './index.less';
 import * as React from 'react';
 
-import { routes } from '../../router';
-import { List } from 'antd-mobile';
 import { inject, observer } from 'mobx-react';
 import { BlogList } from '../../component';
 interface PropsType {
@@ -48,13 +46,20 @@ export class Home extends React.Component<PropsType, any> {
 		})
 	}
 
+	onItemClick = (data: any) => {
+		this.props.History.push({
+			pathname: '/article',
+			state: { data: data}
+		});
+	}
+
 
 	public render() {
 		const { bolgList } = this.props;
 		console.log(bolgList)
 		return (
 			<div className='home'>
-				<BlogList list={bolgList}/>
+				<BlogList list={bolgList} onItemClick={this.onItemClick}/>
 			</div>
 		);
 	}
