@@ -1,7 +1,0 @@
-./src/utils/
-config/
-node_modules/
-public/
-script/
-build/
-registerServiceWorker.js

@@ -1,147 +1,44 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# 使用antd搭建的web框架
+## Available Scripts
 
-### 目录结构
+In the project directory, you can run:
 
+### `npm start`
 
-```
-my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    actions/
-    container/
-    reducers/
-    service/
-    index.scss
-    index.js
-```
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-这两个文件是必须要有而且不能rename的:
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-* `public/index.html` is the page template;
-* `src/index.js` is the JavaScript entry point.
+### `npm test`
 
-其他文件可以任意更改.
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-所有`JS` `CSS`需要创建在 `src`下，只有这个目录下的文件才会被webpack编译打包.
+### `npm run build`
 
-`public/index.html`只能引用`public`目录下的文件.
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-### 环境要求
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-NodeJS 6.0+
+### `npm run eject`
 
-对node有多个版本需求的，可以使用[nvm](https://github.com/creationix/nvm)管理node版本
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-### 开发
-```
-$ npm install
-$ npm start
-```
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-国内npm install速度慢，可以安装[nrm](https://github.com/Pana/nrm)，修改npm源
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-### 编译
-```
-$ npm run build
-```
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-### 项目使用
+## Learn More
 
-```
-service/
-    fetchapi.js
-    history.js
-    LocalStorage.js
-    resource.js
-    router.js
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-
-##### 本地代理
-
-在`package.json`中配置
-
-```
-"proxy": "http://47.93.228.207"
-```
-[更多配置](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#proxying-api-requests-in-development)
-
-
-##### 接口请求
-
-在resource.js中配置接口
-
-
-```
-getUsers: fetchResource(`${API_HOST}${SERVICE_NAME}/getUsers`)
-```
-
-
-然后在业务中去获取数据
-
-```
-import { Resource } from '../../service/resource';
-
-// GET
-Resource.getUsers.get({id: 1}).then(res => {
-      // todo
-    }).catch(err => {
-      // 错误处理
-    })
-    
-// POST
-Resource.getUsers.post({id: 1}, bodyParams).then(res => {
-      // todo
-    }).catch(err => {
-      // 错误处理
-    })
-```
-
-##### 路由跳转
-```
-import BrowserUtils from '../../service/history';
-
-BrowserUtils.push({pathname: '/userinfo', state: {info: user }});
-
-BrowserUtils.goBack();
-
-BrowserUtils.replace({pathname: '/login'});
-```
-
-##### 本地存储
-```
-import LocalStorage from '../service/LocalStorage';
-
-LocalStorage.setItem('user', {id: 1, age: 18, sex: 1});
-const user = LocalStorage.getItem('user');
-```
-
-##### 路由配置
-
-这里路由是[react-router 2.x](https://github.com/ReactTraining/react-router/tree/v2.8.1/docs)
-
-```
-import Login from '../container/login';
-```
-
-
-```
-<Route path="/login" component={Login} />
-```
-
-
-
-##### 使用antd
-
-```
-import { Select } from 'antd';
-```
-
-
+To learn React, check out the [React documentation](https://reactjs.org/).
