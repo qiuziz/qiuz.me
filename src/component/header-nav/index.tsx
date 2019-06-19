@@ -10,8 +10,10 @@ import React from 'react';
 import './index.less';
 
 import LOGO from '../../assets/images/logo.jpg';
-import MAIN from '../../assets/images/main.jpg';
+// import MAIN from '../../assets/images/main.jpg';
+import { QImgLoad } from '../../component/img-load';
 
+const MAIN = 'https://qiuz.me/content/images/2017/10/11153637-2560-1600.jpg';
 export class HeaderNav extends React.Component<any> {
 
 	scrollDown = (e: any) => {
@@ -23,11 +25,12 @@ export class HeaderNav extends React.Component<any> {
 		const { root } = this.props;
 		return (
 			<div className="site-wrapper">
-				<header className="layout-header" style={{height: root ? '100vh' : '85px'}} >
-					<div className="header-nav" style={{background: root ? `#222 url(${MAIN}) no-repeat center center / cover` : 'transparent'}}>
+				<header className={`layout-header ${root ? '' : 'no-main'}`} >
+					<div className="header-nav">
+						{root && <QImgLoad className="main-img" src={MAIN} defaultSrc="" />}
 						<nav className="nav">
 							<div className="header-nav-logo">
-								<img src={LOGO} alt="logo" />
+								<QImgLoad  src={LOGO} />
 							</div>
 							<a className={'menu-button ' + (root ? 'home-button' : '')} href="#">
 								<i className="iconfont menu">&#xe62c;</i>

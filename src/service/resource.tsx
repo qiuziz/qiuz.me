@@ -6,14 +6,18 @@
 import { fetchResource } from './fetchapi';
 
 const API_HOST = '';
-const SERVICE_NAME = '';
+const SERVICE_NAME = '/qiuz';
 
 export const Resource = {
 
 	/**
 	 * bloglist
 	 */
+	blogList: fetchResource(`${API_HOST}${SERVICE_NAME}/blogList`),
 
-	bloglist: fetchResource(`${API_HOST}${SERVICE_NAME}/bloglist`),
+	/**
+	 * blog detail
+	 */
+	getBlog: fetchResource(`${API_HOST}${SERVICE_NAME}/blog`),
 
 };

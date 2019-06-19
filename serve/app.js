@@ -6,11 +6,14 @@
 
 const http = require('http');
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const app = express();
 
-// 邮箱登录
-app.use('/bloglist', require('./router/bloglist'));
+// 添加json解析
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/qiuz/', require('./router/index'));
 
 const port = process.env.PORT || 8888;
 

@@ -43,7 +43,7 @@ export class BlogList extends React.Component<any> {
 									<section className="post-excerpt" >
 										<HTMLEllipsis
 											unsafeHTML={item.html}
-											maxLine="3"
+											maxLine="5"
 											ellipsis=" »"
 											basedOn="letters"
 										/>
