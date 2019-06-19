@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-05-27 10:08:14
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-12 10:21:57
+ * @Last Modified time: 2019-06-19 17:50:16
  */
 
 import './index.less';
@@ -28,7 +28,7 @@ export class QImgLoad extends React.Component<propTypes, any> {
 		defaultStyle: {},
 		src: '',
 		defaultSrc: DEFAULT,
-		onLoad: (load: boolean) => { console.log(load)}
+		onLoad: (load: boolean) => { }
 	}
 
 	constructor(props: propTypes) {

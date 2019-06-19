@@ -6,14 +6,20 @@
 import React from 'react';
 // import { Link } from 'react-router';
 
-class NavItem extends React.Component<any> {
+class NavItem extends React.Component<any, any> {
+
+	close = () => {
+		this.props.onClose && this.props.onClose();
+	}
+	
 	render() {
+		const { show } = this.props;
 		return (
-			<div className="nav">
+			<div className={`nav ${show ? 'nav-opened' : 'nav-closed'}`}>
 				<h3 className="nav-title">菜单</h3>
-				<a href="#" className="nav-close">
+				<span className="nav-close" onClick={this.close}>
 					<span className="hidden">关闭</span>
-				</a>
+				</span>
 				<ul>
 					<li className="nav- nav-current" role="presentation"><a href="http://qiuziz.me/">首页</a></li>
 					<li className="nav-frontend" role="presentation"><a href="http://qiuziz.me/tag/front-end/">FrontEnd</a></li>

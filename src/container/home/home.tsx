@@ -2,7 +2,7 @@
  * @Author: zhaoyn
  * @Date: 2019-03-04 14:38:25
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-19 12:51:37
+ * @Last Modified time: 2019-06-19 17:50:26
  */
 import './index.less';
 import * as React from 'react';
@@ -30,7 +30,6 @@ interface PropsType {
 export class Home extends React.Component<PropsType, any> {
 	constructor(props: any) {
 		super(props);
-		console.log(props);
 		this.state = {
 			
 		}
@@ -60,7 +59,6 @@ export class Home extends React.Component<PropsType, any> {
 
 	public render() {
 		const { bolgList } = this.props;
-		console.log(bolgList)
 		return (
 			<div className='home'>
 				<BlogList list={bolgList} onItemClick={this.onItemClick}/>

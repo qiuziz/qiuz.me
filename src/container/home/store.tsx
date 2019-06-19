@@ -6,7 +6,6 @@ class homeStoreClass {
 
 	@action getBlogList = () => {
 		Resource.blogList.get().then((res: any) => {
-			console.log(res);
 			this.bolgList = res.data || [];
 		})
 	}
