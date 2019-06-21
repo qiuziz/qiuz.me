@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-05-07 16:03:31
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-18 18:04:33
+ * @Last Modified time: 2019-06-21 17:00:52
  */
 
 import * as React from 'react';
@@ -20,13 +20,15 @@ import {
 	ImgLoadDemo,
 	Home,
 	Video,
-	Article
+	Article,
+	Post
 } from './container';
 
-import { homeStore, articleStore } from './container';
+import { homeStore, articleStore, postStore } from './container';
 const STORES = {
 	homeStore,
-	articleStore
+	articleStore,
+	postStore,
 };
 
 export const routes = [
@@ -84,6 +86,13 @@ export const routes = [
 		Layout: Layout,
     exact: true,
 		title: 'article',
+	},
+	{
+    path: '/post',
+		Component: Post,
+		Layout: Layout,
+    exact: true,
+		title: 'post',
   },
 ];
 
