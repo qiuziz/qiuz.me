@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-06-18 17:56:14
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-19 13:12:54
+ * @Last Modified time: 2019-06-21 15:22:54
  */
 
 import React from 'react';
@@ -11,7 +11,8 @@ import './index.less';
 import LOGO from '../../assets/images/logo.jpg';
 import { inject, observer } from 'mobx-react';
 import { getUrlParams, isEmptyObject } from '../../common';
-
+// @ts-ignore
+import ReactMarkdown from 'react-markdown/with-html';
 @inject((stores: any) => {
 	return {
 		getBlog: stores.articleStore.getBlog,
@@ -55,7 +56,7 @@ export class Article extends React.Component<any, any> {
 					</header>
 
 					<section className="post-content" dangerouslySetInnerHTML={{__html: article.html}} />
-
+					{/* <ReactMarkdown source={article.html} escapeHtml={false} /> */}
 					<footer className="post-footer">
 						<figure className="author-image">
 							<span className="img" style={{backgroundImage: `url(${LOGO})` }} />
