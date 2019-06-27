@@ -20,4 +20,9 @@ export const Resource = {
 	 */
 	getBlog: fetchResource(`${API_HOST}${SERVICE_NAME}/blog`),
 
+	/**
+	 * blog post
+	 */
+	postBlog: fetchResource(`${API_HOST}${SERVICE_NAME}/upload`),
+
 };

@@ -4,6 +4,7 @@
  * */
 
 import 'whatwg-fetch';
+import { Toast } from 'antd-mobile';
 
 const fetchMethod = async (_url: any, _config: any) => {
 	try {
@@ -11,15 +12,15 @@ const fetchMethod = async (_url: any, _config: any) => {
 		if (!response.ok) {
 			return response.json().then(err => { throw err; });
 		}
-		try {
-			return await response.json();
+		const result = await response.json();
+		if(result.code !== '0000') {
+			Toast.info(result.msg);
+			throw result.msg;
 		}
-		catch (e) {
-			return await Promise.resolve('');
-		}
+		return result;
 	}
-	catch (err_1) {
-		throw err_1;
+	catch (err) {
+		throw err;
 	}
 };
 
@@ -65,6 +66,15 @@ class FetchApi {
 			Object.assign(config, {
 				method: 'POST',
 				body: JSON.stringify(bodyParams)
+			})
+		);
+	};
+
+	upload = (urlSearchParams: object, bodyParams: FormData, config = {headers: {}}) => {
+		return fetchMethod(matchUrlSearchParams(this.url, urlSearchParams),
+			Object.assign({ ...config }, {
+				method: 'POST',
+				body: bodyParams
 			})
 		);
 	};

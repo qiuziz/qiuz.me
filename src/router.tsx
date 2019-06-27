@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-05-07 16:03:31
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-21 17:00:52
+ * @Last Modified time: 2019-06-25 16:45:14
  */
 
 import * as React from 'react';
@@ -19,7 +19,6 @@ import {
 	TabsDemo,
 	ImgLoadDemo,
 	Home,
-	Video,
 	Article,
 	Post
 } from './container';
@@ -72,13 +71,6 @@ export const routes = [
     exact: true,
 		title: 'common-utils',
 		root: true,
-  },
-  {
-    path: '/video',
-		Component: Video,
-		Layout: Layout,
-    exact: true,
-		title: 'video',
   },
   {
     path: '/article',

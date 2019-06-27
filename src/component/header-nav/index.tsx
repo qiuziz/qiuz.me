@@ -46,7 +46,7 @@ export class HeaderNav extends React.Component<any, any> {
 								<QImgLoad  src={LOGO} />
 							</div>
 							<span className={'menu-button ' + (root ? 'home-button' : '')} onClick={this.navToggle}>
-								<i className="iconfont menu">&#xe62c;</i>
+								<i className="iconfont icon-menu"></i>
 								<span className="word">菜单</span>
 							</span>
 						</nav>
@@ -63,7 +63,7 @@ export class HeaderNav extends React.Component<any, any> {
 						{
 							root
 								?	<a className="" href="#content" data-offset="-45" onClick={this.scrollDown}>
-									<i className="iconfont scroll-down">&#xe62d;</i>
+									<i className="iconfont icon-arrow"></i>
 								</a>
 								: ''
 						}

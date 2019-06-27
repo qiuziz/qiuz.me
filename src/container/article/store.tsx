@@ -4,8 +4,8 @@ import { Resource } from '../../service/resource';
 class articleStoreClass {
 	@observable article: any = {};
 
-	@action getBlog = (id: number) => {
-		Resource.getBlog.post({}, {id: Number(id)}).then((res: any) => {
+	@action getBlog = (id: string) => {
+		Resource.getBlog.post({}, {id: id}).then((res: any) => {
 			console.log(res);
 			if (res) {
 				this.article = res.data;

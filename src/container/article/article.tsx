@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-06-18 17:56:14
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-21 15:22:54
+ * @Last Modified time: 2019-06-26 15:08:19
  */
 
 import React from 'react';
@@ -11,8 +11,7 @@ import './index.less';
 import LOGO from '../../assets/images/logo.jpg';
 import { inject, observer } from 'mobx-react';
 import { getUrlParams, isEmptyObject } from '../../common';
-// @ts-ignore
-import ReactMarkdown from 'react-markdown/with-html';
+
 @inject((stores: any) => {
 	return {
 		getBlog: stores.articleStore.getBlog,

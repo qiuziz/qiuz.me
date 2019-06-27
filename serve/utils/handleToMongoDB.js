@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2018-09-07 19:17:57
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-18 16:54:04
+ * @Last Modified time: 2019-06-27 11:30:55
  */
 
 const connect = require('./db.js');
@@ -52,16 +52,16 @@ const handleToMongoDB = {
       });
     })
   }),
-  find: (collectionName, query) => new Promise((resolve, reject) => {
+  find: (collectionName, query, fields) => new Promise((resolve, reject) => {
     connect((err, db, client) => {
       const collection = db.collection(collectionName);
-      return collection.find(query,  {fields: {_id: 0, url: 0, lastModified: 0}}).toArray(function(err, result) {
+      return collection.find(query,  {fields: fields}).toArray(function(err, result) {
         if(err)
         {
             console.log('Error:'+ err);
             reject(err);
         }
-        resolve(result);
+        resolve(result.map(item => {item.id = item._id;delete item._id; return item}));
         client.close();
       });
     })
