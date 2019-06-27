@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-06-26 15:17:38
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-27 11:38:48
+ * @Last Modified time: 2019-06-27 14:41:18
  */
 
 const express = require('express');
@@ -48,12 +48,10 @@ router.post("/", upload, (req, res) => {
 		return;
 	}
 	fs.readFile(req.file.destination + req.file.originalname, 'utf8', (err, data) => {
-		console.log(err, data);
-		console.log(marked(data));
 		if (req.body.id) {
-			handleToMongoDB.update('blog', {_id: ObjectID(req.body.id)}, {html: marked(data), title: req.body.title});
+			handleToMongoDB.update('blog', {_id: ObjectID(req.body.id)}, {html: marked(data), title: req.body.title, updateTime: new Date().format("yyyy-MM-dd hh:mm:ss")});
 		} else {
-			handleToMongoDB.insert('blog', {html: marked(data), title: req.body.title});
+			handleToMongoDB.insert('blog', {html: marked(data), title: req.body.title, createTime: new Date().format("yyyy-MM-dd hh:mm:ss")});
 		}
 	})
 	res.send({'data': 'null', 'code': '0000'});

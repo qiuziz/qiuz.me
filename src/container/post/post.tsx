@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-06-18 17:56:14
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-27 11:43:21
+ * @Last Modified time: 2019-06-27 14:47:11
  */
 
 import React from 'react';
@@ -41,7 +41,12 @@ export class Post extends React.Component<any, any> {
 		console.log(info);
 	}
 
-	upload = (data: any) => {
+	upload = ({
+    data,
+    file,
+    onError,
+    onSuccess,
+  }: any) => {
 		console.log(data);
 		const { title } = this.state;
 		// if (!title) {
@@ -49,11 +54,17 @@ export class Post extends React.Component<any, any> {
 		// 	return;
 		// }
 		const formData = new FormData();
-		formData.append('file', data.file);
+		formData.append('file', file);
 		formData.append('title', title);
-		Resource.postBlog.upload({}, formData).then((res: any) => {
+		Resource.postBlog.upload({}, formData)
+		.then((res: any) => {
 			console.log(res);
-		}).catch(err => console.log(err));
+			onSuccess(res, file);
+		})
+		.catch(err => {
+			onError(err);
+			console.log(err)
+		});
 	}
 
 	updateTile = (e: any) => {
