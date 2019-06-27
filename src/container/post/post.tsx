@@ -3,7 +3,7 @@
  * @Github: <https://github.com/qiuziz>
  * @Date: 2019-06-18 17:56:14
  * @Last Modified by: qiuz
- * @Last Modified time: 2019-06-27 14:47:11
+ * @Last Modified time: 2019-06-27 14:50:47
  */
 
 import React from 'react';
@@ -49,10 +49,10 @@ export class Post extends React.Component<any, any> {
   }: any) => {
 		console.log(data);
 		const { title } = this.state;
-		// if (!title) {
-		// 	Toast.info('标题不能为空');
-		// 	return;
-		// }
+		if (!title) {
+			Toast.info('标题不能为空');
+			return;
+		}
 		const formData = new FormData();
 		formData.append('file', file);
 		formData.append('title', title);
